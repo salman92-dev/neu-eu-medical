@@ -21,6 +21,7 @@ export default function EligibilityPage() {
     state: "",
     location: "",
     thyroidCancer: "",
+    medicareInsurance: "",
     pregnant: "",
     allergicToGlp: "",
     triedGlpBefore: "",
@@ -47,6 +48,8 @@ export default function EligibilityPage() {
       setErrorMessage("You are disqualified because you are pregnant.");
     } else if (name === "allergicToGlp" && value === "Yes") {
       setErrorMessage("You are disqualified due to allergy to GLP-1's.");
+    } else if (name === "medicareInsurance" && value === "Yes") {
+      setErrorMessage("Unfortunately we cannot manage your care due to your coverage.");
     } else {
       setErrorMessage("");
     }
@@ -82,11 +85,15 @@ export default function EligibilityPage() {
       setErrorMessage("You are disqualified due to allergy to GLP-1's.");
       return;
     }
+    if (formData.medicareInsurance === "Yes") {
+      setErrorMessage("Unfortunately we cannot manage your care due to your coverage.");
+      return;
+    }
 
     // Clear any previous error messages
     setErrorMessage("");
 
-    if (step < 8) {
+    if (step < 9) {
       // STEP VALIDATION: check only fields relevant to the current step
       const stepRequiredFields = {
         1: ["name"],
@@ -94,9 +101,10 @@ export default function EligibilityPage() {
         3: ["state"],
         4: ["location"],
         5: ["thyroidCancer"],
-        6: ["pregnant"],
-        7: ["allergicToGlp"],
-        8: ["triedGlpBefore"],
+        6: ["medicareInsurance"],
+        7: ["pregnant"],
+        8: ["allergicToGlp"],
+        9: ["triedGlpBefore"],
       };
 
       const currentFields = stepRequiredFields[step] || [];
@@ -129,6 +137,7 @@ export default function EligibilityPage() {
         "state",
         "thyroidCancer",
         "pregnant",
+        "medicareInsurance",
         "allergicToGlp",
         "triedGlpBefore",
       ];
@@ -145,9 +154,7 @@ export default function EligibilityPage() {
       // ✅ Logic for redirect
       const { triedGlpBefore } = formData;
 
-
-
-      router.push("/consent"); 
+      router.push("/consent");
     }
   };
 
@@ -240,7 +247,7 @@ export default function EligibilityPage() {
             onBack={prevStep}
           >
             <div className="mt-6 space-y-3">
-              {["Texas", "Oregon","Others"].map((stateOption) => (
+              {["Texas", "Oregon", "Others"].map((stateOption) => (
                 <label
                   key={stateOption}
                   className={`block w-full p-3 border rounded-md cursor-pointer transition-colors ${
@@ -265,35 +272,34 @@ export default function EligibilityPage() {
             </div>
           </Eligibility>
         );
-        case 4:
-  return (
-    <Eligibility
-      tabNumber="04"
-      heading="What is your current State?"
-      subheading="Please enter your city or address"
-      buttontext="Next"
-      onClick={nextStep}
-      onBack={prevStep}
-    >
-      <div className="mt-6">
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <LocationIcon />
-          </div>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleInputChange}
-            placeholder="Select your state"
-            className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
-            required
-          />
-        </div>
-      </div>
-    </Eligibility>
-  );
-
+      case 4:
+        return (
+          <Eligibility
+            tabNumber="04"
+            heading="What is your current State?"
+            subheading="Please enter your city or address"
+            buttontext="Next"
+            onClick={nextStep}
+            onBack={prevStep}
+          >
+            <div className="mt-6">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <LocationIcon />
+                </div>
+                <input
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  placeholder="Select your state"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
+                  required
+                />
+              </div>
+            </div>
+          </Eligibility>
+        );
 
       case 5:
         return (
@@ -332,11 +338,48 @@ export default function EligibilityPage() {
             </div>
           </Eligibility>
         );
-
       case 6:
         return (
           <Eligibility
             tabNumber="06"
+            heading="Do you have Medicare/Medicaid Insurance?"
+            buttontext="Next"
+            onClick={nextStep}
+            onBack={prevStep}
+          >
+            <div className="mt-6 space-y-3">
+              {["Yes", "No"].map((option) => (
+                <label
+                  key={option}
+                  className={`block w-full p-3 rounded-md cursor-pointer transition-colors border ${
+                    formData.medicareInsurance === option
+                      ? "bg-[#FFE4D1] border-[#FFD4B5]"
+                      : "bg-gray-50 border-gray-200 hover:bg-gray-100"
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <input
+                      type="radio"
+                      name="medicareInsurance"
+                      value={option}
+                      checked={formData.medicareInsurance === option}
+                      onChange={() =>
+                        handleRadioChange("medicareInsurance", option)
+                      }
+                      className="custom-radio w-4 h-4 border-gray-300"
+                    />
+                    <span className="ml-2">{option}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </Eligibility>
+        );
+
+      case 7:
+        return (
+          <Eligibility
+            tabNumber="07"
             heading="Are you pregnant?"
             buttontext="Next"
             onClick={nextStep}
@@ -369,10 +412,10 @@ export default function EligibilityPage() {
           </Eligibility>
         );
 
-      case 7:
+      case 8:
         return (
           <Eligibility
-            tabNumber="07"
+            tabNumber="08"
             heading="Are you allergic to glp-1's?"
             buttontext="Next"
             onClick={nextStep}
@@ -407,10 +450,10 @@ export default function EligibilityPage() {
           </Eligibility>
         );
 
-      case 8:
+      case 9:
         return (
           <Eligibility
-            tabNumber="08"
+            tabNumber="09"
             heading="Have you tried a glp-1 in the past?"
             buttontext="Next"
             onClick={nextStep}

@@ -1,5 +1,7 @@
 export const blogs = [
     {
+        meta_title: 'The Future of Weight Loss: Discovering Tirzepatide',
+        meta_description: 'Discover how Tirzepatide is transforming prescription weight loss. Learn from Neu Eu experts about telehealth, GLP‑1 programs, & achieving sustainable results.',
         title: 'The Future of Weight Loss: Discovering Tirzepatide and How Neu Eu Medical Is Revolutionizing Telehealth Services',
         date: 'January 24, 2025',
         category: 'Weightloss',
@@ -114,6 +116,8 @@ If you’re ready to begin your transformation, visit Neu Eu Medical today an
         `
     },
     {
+        meta_title: 'Semaglutide Weight Loss Program Guide Online | Neu Eu',
+        meta_description: 'Explore the benefits of Semaglutide for effective weight loss. Neu Eu explains how GLP‑1 programs, online consultations, and expert care deliver real results.',
         title: 'Exploring Semaglutide for Weight Loss: An Exciting and Informative Guide',
         date: 'January 4, 2025',
         category: 'Weightloss',

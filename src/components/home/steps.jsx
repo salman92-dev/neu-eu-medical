@@ -13,24 +13,28 @@ import { motion } from "framer-motion";
 const stepsData = [
   {
     img: "/images/step-1.png",
+    alt: "Step 1 Banner image for weight loss",
     text: "Fill out our short survey to determine eligibility for services.",
     name: "Jessica S.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-2.png",
+    alt:"Step 2 Banner image for weight loss",
     text: "Meet with your provider to assess your diet, fitness, & health, & customize a personalized weight loss plan.",
     name: "Adam K.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-3.png",
+    alt: "Step 3 Banner image for weight loss",
     text: "On your appointment day, your provider will order your medication, & a U.S. pharmacy will process & ship it.",
     name: "Victoria J.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-4.png",
+    alt: "Step 4 Banner image for weight loss",
     text: "Take your medication as prescribed & follow your treatment plan—many patients lose up to 10 lbs in the first month!",
     name: "John P.",
     prfation: "Neu Eu Patient",
@@ -133,7 +137,7 @@ export default function Steps() {
 
                 <Image
                   src={step.img}
-                  alt=""
+                  alt={step.alt}
                   width={841}
                   height={325}
                   className="mx-auto w-full"

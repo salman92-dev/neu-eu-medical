@@ -60,7 +60,7 @@ export default function Navbar({ className, containerClass }) {
         <motion.div variants={logoVariant} initial="hidden" animate="show">
           <Link href="/" className="block">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo.png"
               alt="logo"
               width={107}
               height={40}

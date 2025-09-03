@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import BlurText from "../animations/BlurText"
 import { CgArrowLongLeft } from "react-icons/cg"
+import { Helmet, HelmetProvider } from "react-helmet-async"
 
 
 // Animation variants for page transitions
@@ -35,6 +36,15 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
 
     return (
         <div className="relative bg-[#FFE6DF] flex items-center justify-center px-4 py-12 min-h-screen">
+            <HelmetProvider>
+                              <Helmet>
+                                <title>Check Eligibility for Online Weight Loss Programs | Neu Eu</title>
+                                <meta
+                                  name="description"
+                                  content="Check eligibility for Neu Eu’s prescription and online weight loss programs. Find out if GLP‑1 medication‑assisted plans are the right choice for your journey."
+                                />
+                              </Helmet>
+                            </HelmetProvider>
             <div className="md:mt-10 mt-5 max-w-xl w-full">
                 <BlurText
                     text="Let's check your eligibility"
@@ -67,13 +77,13 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
                                     ) }
                                 </div>
                                 <div className="opacity-90 font-medium">
-                                    <span>{ tabNumber }</span> / <span>8</span>
+                                    <span>{ tabNumber }</span> / <span>9</span>
                                 </div>
                             </div>
                             <div className="relative w-full h-1.5 bg-[#F8F8F8]">
                                 <div
                                     className="absolute bg-[#751010] h-1.5"
-                                    style={ { width: `${(Number.parseInt(tabNumber) / 8) * 100}%` } }
+                                    style={ { width: `${(Number.parseInt(tabNumber) / 9) * 100}%` } }
                                 ></div>
                             </div>
                             <div className="p-8 py-12 ">

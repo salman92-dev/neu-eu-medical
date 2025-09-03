@@ -1,13 +1,24 @@
+"use client"
 import Navbar from '@/layout/navbar'
 import Link from 'next/link'
 import React from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 export default function Page() {
     return (
         <>
             <Navbar />
+            <HelmetProvider>
+                            <Helmet>
+                                <title>Terms and Conditions | Neu Eu Medical Weight Loss Program</title>
+                                <meta
+                                    name="description"
+                                    content="Review Neu Eu’s terms and conditions to understand the guidelines for accessing our prescription weight loss programs, telehealth consultations, and services."
+                                />
+                            </Helmet>
+                        </HelmetProvider>
             <div className='p-4 md:p-10'>
-                <h2 className='text-3xl font-bold text-[#751010] my-10'> Terms of Service</h2>
+                <h1 className='text-3xl font-bold text-[#751010] my-10'> Terms of Service</h1>
 
                 <p className='font-semibold'>
                     Terms and Conditions of Use

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 
@@ -43,6 +44,15 @@ export default function BlogSlider() {
 
     return (
         <section className="py-20 px-4 sm:px-6 md:px-12 n">
+            <HelmetProvider>
+                <Helmet>
+                    <title>Weight Loss Blog | Medication Insights & Programs | Neu Eu</title>
+                    <meta
+                        name="description"
+                        content="Explore Neu Eu’s weight loss blog for insights on medication‑assisted programs, telehealth care, and expert advice on semaglutide, tirzepatide, and more."
+                    />
+                </Helmet>
+            </HelmetProvider>
             <motion.h1
                 className="text-4xl md:text-6xl text-center font-bold text-[#751010] mb-16"
                 initial={ { y: 20, opacity: 0 } }

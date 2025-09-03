@@ -2,10 +2,20 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function BlogDetails({ blog }) {
     return (
         <div className='mb-10'>
+              <HelmetProvider>
+                                        <Helmet>
+                                            <title>{ blog.meta_title }</title>
+                                            <meta
+                                                name="description"
+                                                content={ blog.meta_description }
+                                            />
+                                        </Helmet>
+                                    </HelmetProvider>
             <div className='bg-[#FFE6DF] rounded-b-3xl md:pt-20 pt-10 '>
                 <div className='md:w-2/3 md:px-0 px-4 mx-auto'>
                     <motion.h1

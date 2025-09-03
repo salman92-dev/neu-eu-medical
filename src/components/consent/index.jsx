@@ -76,10 +76,9 @@ export default function ConsentFormPage() {
     setSending(true);
 
     try {
-      // Replace with your EmailJS service ID, template ID, and user/public key
-      const serviceID = "service_kzpfa1o";
-      const templateID = "template_8ie1cek";
-      const publicKey = "FhTT97vSejz41wgWD";
+      const serviceID = "service_vfkrcx4";
+      const templateID = "template_doeqo7m";
+      const publicKey = "DJUu3uqyxHUx7ejZC";
 
       const templateParams = {
         name: formData.name,

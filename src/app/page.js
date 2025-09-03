@@ -16,9 +16,16 @@ import ContactSupport from "@/components/home/contactSupport";
 import Image from "next/image";
 import ScrollSection from "@/components/home/ScrollSection";
 
+
+export const metadata = {
+  title: "Online Medical & Prescription Weight Loss Program | Neu Eu",
+  description: "Achieve lasting results with Neu Eu’s online medical and prescription weight loss programs. Personalized care, proven GLP-1 therapies, and expert guidance.",
+};
+
 export default function Home() {
   return (
     <>
+    
       <div className="md:px-8 px-3 relative">
         <Image
           src="/images/Ellipse1.png"
