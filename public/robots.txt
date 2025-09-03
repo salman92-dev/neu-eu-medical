@@ -1,0 +1,23 @@
+User-agent: *
+# Block Next.js internal files
+Disallow: /_next/
+Disallow: /null
+
+# Allow main content pages
+Allow: /$
+Allow: /products/
+Allow: /blog/
+Allow: /contact
+Allow: /eligibility
+Allow: /privacy-policies
+Allow: /terms-and-conditions
+
+# Block static image query URLs (Next.js optimizes these automatically)
+Disallow: /*?*q=*
+Disallow: /*?*w=*
+
+# Allow normal image assets
+Allow: /images/
+
+# Sitemap
+Sitemap: https://www.neueu.co/sitemap.xml
